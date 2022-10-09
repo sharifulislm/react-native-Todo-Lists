@@ -1,11 +1,11 @@
 export default tempData = [
     {
         name: "plan a Trip",
-        color: " #24AGD9",
+        color: "#a634f7",
         todos: [
             {
                 title: "Book Light",
-                comleted: true
+                comleted: false
             },
             {
                 title: "Passport Check",
@@ -19,36 +19,36 @@ export default tempData = [
     },
     {
         name: "Errands",
-        color: " #80eeD9",
+        color: "#f051a1",
         todos: [
             {
                 title: "Buy Milk",
                 comleted: false
             },
             {
-                title: "Passport Check",
+                title: "Plan weekend comping trip",
                 comleted: true
             },
             {
-                title: "pack Luggage",
+                title: "Run 2 miles",
                 comleted: false
             }
         ]
     },
     {
         name: "Birthday Party",
-        color: " #595BD9",
+        color: "#fcc0b6",
         todos: [
             {
-                title: "Book Light",
+                title: "Book Lfdight",
+                comleted: false
+            },
+            {
+                title: "Passport Cdfheck",
                 comleted: true
             },
             {
-                title: "Passport Check",
-                comleted: true
-            },
-            {
-                title: "pack Luggage",
+                title: "dfdf",
                 comleted: false
             }
         ]

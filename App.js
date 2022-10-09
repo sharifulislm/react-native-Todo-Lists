@@ -2,6 +2,7 @@ import { AntDesign } from '@expo/vector-icons';
 import React from 'react';
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Colors from './Colors';
+import ToduList from './components/ToduList';
 import tempData from './tempData';
 
 export default class App extends React.Component {
@@ -29,11 +30,7 @@ export default class App extends React.Component {
         keyExtractor={item => item.name}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
-        renderItem = {({item}) => (
-           <View>
-             <Text> {item.name}</Text>
-                     </View>
-        )}
+        renderItem = {({item}) => <ToduList list={item}/>}
         />
       </View>
       </View>
