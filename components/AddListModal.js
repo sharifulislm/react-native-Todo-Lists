@@ -9,6 +9,7 @@ import {
     View
 } from "react-native";
 import Colors from "../Colors";
+import tempData from "../tempData";
 export default class AddListModal extends Component {
   backgroundColors = [
     "#4785ff",
@@ -23,6 +24,17 @@ export default class AddListModal extends Component {
     name: "",
     color: this.backgroundColors[0],
   };
+  createTodo =() => {
+    const {name, color} =this.state
+    tempData.push({
+        name, 
+        color,
+        todos: []
+    })
+    this.setState({name: ""})
+    this.props.closeModel();
+  } 
+
   renderColors() {
     return this.backgroundColors.map((color) => {
       return (
@@ -54,6 +66,7 @@ export default class AddListModal extends Component {
           <View style={{flexDirection: "row" ,justifyContent: "space-between" , marginTop: 12}}>{this.renderColors()}</View>
           <TouchableOpacity
             style={[styles.create, { backgroundColor: this.state.color }]}
+          onPress={this.createTodo}  
           >
             <Text style={{ color: Colors.white, fontWeight: "600" }}>
               {" "}

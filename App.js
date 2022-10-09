@@ -8,7 +8,7 @@ import tempData from './tempData';
 
 export default class App extends React.Component {
   state = {
-    addTodoVisible: true
+    addTodoVisible: false
   }
   toggleAddTodoModal() {
     this.setState({addTodoVisible: !this.state.addTodoVisible})
