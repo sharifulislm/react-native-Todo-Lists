@@ -1,7 +1,8 @@
 import { AntDesign } from '@expo/vector-icons';
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Colors from './Colors';
+import tempData from './tempData';
 
 export default class App extends React.Component {
 
@@ -21,6 +22,19 @@ export default class App extends React.Component {
       <AntDesign name="plus" size={24} color="black" />
       </TouchableOpacity>
       <Text style={styles.add}> Add List</Text>
+      </View>
+      <View style={{height: 275, paddingLeft: 32}}>
+        <FlatList 
+        data={tempData}
+        keyExtractor={item => item.name}
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+        renderItem = {({item}) => (
+           <View>
+             <Text> {item.name}</Text>
+                     </View>
+        )}
+        />
       </View>
       </View>
     );
