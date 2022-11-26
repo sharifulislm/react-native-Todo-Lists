@@ -1,22 +1,21 @@
 {
   "expo": {
-    "name": "Todo-task-application",
-    "slug": "Todo-task-application",
+    "name": "Todo-list application",
+    "slug": " todo list app",
+    "description": "this applicatin will help you and user can take task and also color and user update a task and deleed",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/react-download.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/react3download.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },

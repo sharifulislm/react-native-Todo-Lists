@@ -13,6 +13,9 @@ export default class App extends React.Component {
   toggleAddTodoModal() {
     this.setState({addTodoVisible: !this.state.addTodoVisible})
   }
+  renderList = list => {
+    return <ToduList list={list}/>
+  }
 
   render(){
     return (
@@ -41,7 +44,7 @@ export default class App extends React.Component {
         keyExtractor={item => item.name}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
-        renderItem = {({item}) => <ToduList list={item}/>}
+        renderItem = {({item}) => this.renderList(item)}
         />
       </View>
       </View>
