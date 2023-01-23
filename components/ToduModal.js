@@ -1,4 +1,4 @@
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign, Ionicons } from '@expo/vector-icons';
 import React from 'react';
 import { FlatList, KeyboardAvoidingView, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import color from '../Colors';
@@ -12,8 +12,12 @@ export default class ToduModal extends React.Component {
 
     renderTodo = todo => {
         return (
-            <View>
-                <Text>{todo.title}</Text>
+            <View style={styles.todoContainer}>
+               <TouchableOpacity>
+               <Ionicons name="ios-square-outline" size={24} color={color.gray} style={{width:32}}/>
+                 
+               </TouchableOpacity>
+               <Text style={[styles.todo, {color: color.black}]}>{todo.title}</Text>
             </View>
         )
     }
@@ -105,6 +109,11 @@ const styles = StyleSheet.create({
         padding: 16,
         alignItems: "center",
         justifyContent: "center"
+    },
+    todoContainer: {
+        paddingVertical: 16,
+        flexDirection: "row",
+        alignItems: "center",
     }
 
 });
