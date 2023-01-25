@@ -29,11 +29,11 @@ export default class ToduList extends React.Component {
                 </Text>
                 <View>
                     <View style={{alignItems: "center"}}>
-                    <Text style={styles.count}> {completedCount}</Text>
+                    <Text style={styles.count}> { RemainingCount}</Text>
                     <Text style={styles.subtitle}>Remaining</Text>
                     </View>
                     <View style={{alignItems: "center"}}>
-                    <Text style={styles.count}>{RemainingCount} </Text>
+                    <Text style={styles.count}>{completedCount} </Text>
                     <Text style={styles.subtitle}>Completed</Text>
                     </View>
                 </View>
