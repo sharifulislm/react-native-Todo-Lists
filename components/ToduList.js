@@ -14,12 +14,12 @@ export default class ToduList extends React.Component {
 
     render(){
         const list = this.props.list;
-        const completedCount = list.todos.filter(todo => todo.comleted).length;
+        const completedCount = list.todos.filter(todo => todo.completed).length;
         const RemainingCount = list.todos.length - completedCount;
         return(
             <View>
                 <Modal animationType="slide" visible={this.state.showListvisible} onRequestClose={()=> this.toggleListModal()}>
-                <ToduModal list={list} CloseModal={()=> this.toggleListModal()}/>
+                <ToduModal list={list} CloseModal={()=> this.toggleListModal()} updateList={this.props.updateList}/>
                 </Modal>
                 <TouchableOpacity style={[styles.listContainer, {backgroundColor: list.color}]}
                 onPress={() => this.toggleListModal()}

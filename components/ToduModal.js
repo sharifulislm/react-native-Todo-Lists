@@ -5,28 +5,34 @@ import color from '../Colors';
 
 export default class ToduModal extends React.Component {
     state={
-        name: this.props.list.name,
-        color: this.props.list.color,
-        todos: this.props.list.todos
+       newTodo: ""
     };
+    toggleTodoCompleted = index => {
+        let list = this.props.list;
+        list.todos[index].completed = !list.todos[index].completed;
 
-    renderTodo = todo => {
+        this.props.updateList(list);
+    }
+
+    renderTodo = (todo,index) => {
         return (
             <View style={styles.todoContainer}>
-               <TouchableOpacity>
-               <Ionicons name="ios-square-outline" size={24} color={color.gray} style={{width:32}}/>
+               <TouchableOpacity onPress={()=> this.toggleTodoCompleted(index)}>
+               <Ionicons name={todo.completed ? "ios-square" : "ios-square-outline"} size={24} color={color.gray} style={{width:32}}/>
                  
                </TouchableOpacity>
-               <Text style={[styles.todo, {color: color.black}]}>{todo.title}</Text>
+               <Text style={[styles.todo, {textDecorationLine: todo.completed ? "line-through": "none", color: color.black}]}>{todo.title}</Text>
             </View>
         )
     }
 
   render() {
-   const taskCount = this.state.todos.length
-   const completedCount = this.state.todos.filter(todo => todo.completed).length
+    const list =this.props.list
+   const taskCount = list.todos.length
+   const completedCount = list.todos.filter(todo => todo.completed).length
 
     return (
+        <KeyboardAvoidingView style={{flex: 1}} behavior="padding">
       <SafeAreaView style={styles.container}>
         <TouchableOpacity 
         style={{position: 'absolute',top: 64, right:32, zIndex: 10}} 
@@ -34,9 +40,9 @@ export default class ToduModal extends React.Component {
         >
         <AntDesign name="close" size={24} color="black" />
         </TouchableOpacity>
-        <View style={[styles.section, styles.header,{borderBottomColor: this.state.color}]}>
+        <View style={[styles.section, styles.header,{borderBottomColor: list.color}]}>
             <View >
-                <Text style={styles.title}>{this.state.name}</Text>
+                <Text style={styles.title}>{list.name}</Text>
                 <Text style={styles.taskCount}>
                {completedCount} of {taskCount} tasks
                 </Text>
@@ -44,22 +50,24 @@ export default class ToduModal extends React.Component {
             </View>
         </View>
         <View style={[styles.section,{flex: 3}]}>
-          <FlatList data={this.state.todos} renderItem={ ({item}) => this.renderTodo(item)}
+          <FlatList 
+          data={list.todos} renderItem={ ({item,index}) => this.renderTodo(item,index)}
           keyExtractor={item => item.title}
           contentContainerStyle={{paddingHorizontal: 32,paddingVertical: 64}}
           showsVerticalScrollIndicator={false}
 
           />
         </View>
-        <KeyboardAvoidingView style={[styles.section, styles.footer]} behavior="padding">
-            <TextInput style={[styles.input, {borderColor: this.state.color}]} />
-            <TouchableOpacity style={[styles.addTodu, {backgroundColor: this.state.color}]}>
+        <View style={[styles.section, styles.footer]} >
+            <TextInput style={[styles.input, {borderColor: list.color}]} />
+            <TouchableOpacity style={[styles.addTodu, {backgroundColor: list.color}]}>
             <AntDesign name="plus" size={24} color="black" />
             </TouchableOpacity>
 
-        </KeyboardAvoidingView>
+        </View>
 
       </SafeAreaView>
+      </KeyboardAvoidingView>
     )
   }
 }
@@ -114,6 +122,11 @@ const styles = StyleSheet.create({
         paddingVertical: 16,
         flexDirection: "row",
         alignItems: "center",
+    },
+    todo: {
+        color: color.black,
+        fontWeight: "700",
+        fontSize: 16,
     }
 
 });

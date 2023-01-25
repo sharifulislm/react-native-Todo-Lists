@@ -8,14 +8,26 @@ import tempData from './tempData';
 
 export default class App extends React.Component {
   state = {
-    addTodoVisible: false
+    addTodoVisible: false,
+    list: tempData
   }
   toggleAddTodoModal() {
     this.setState({addTodoVisible: !this.state.addTodoVisible})
   }
   renderList = list => {
-    return <ToduList list={list}/>
-  }
+    return <ToduList list={list} updateList={this.updateList}/>
+  };
+
+ addList = list => {
+      this.setState({list: [...this.state.list,{...list, id: this.state.list.length + 1, todos: []}]});
+ };
+ updateList = list => { 
+  this.setState({
+    list: this.state.list.map(item => {
+      return item.id === list.id ? list : item;
+    })
+  })
+ };
 
   render(){
     return (
@@ -40,7 +52,7 @@ export default class App extends React.Component {
       </View>
       <View style={{height: 275, paddingLeft: 32}}>
         <FlatList 
-        data={tempData}
+        data={this.state.list}
         keyExtractor={item => item.name}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
