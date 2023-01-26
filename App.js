@@ -6,11 +6,17 @@ import AddListModal from './components/AddListModal';
 import ToduList from './components/ToduList';
 import tempData from './tempData';
 
+
 export default class App extends React.Component {
   state = {
     addTodoVisible: false,
     list: tempData
   }
+
+  componentDidMount() {
+  //  firebase = new Fire();
+  }
+
   toggleAddTodoModal() {
     this.setState({addTodoVisible: !this.state.addTodoVisible})
   }
