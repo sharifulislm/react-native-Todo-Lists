@@ -4,7 +4,9 @@ import { FlatList, Modal, StyleSheet, Text, TouchableOpacity, View } from 'react
 import Colors from './Colors';
 import AddListModal from './components/AddListModal';
 import ToduList from './components/ToduList';
+import firebase from './firebaseConfig';
 import tempData from './tempData';
+
 
 
 export default class App extends React.Component {
@@ -12,6 +14,7 @@ export default class App extends React.Component {
     addTodoVisible: false,
     list: tempData
   }
+  const db = firebase.firestore();
 
   componentDidMount() {
     // firbase = new Fire();
